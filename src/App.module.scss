@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  &List {
+    list-style-type: none;
+  }
 }
 
 .App-logo {

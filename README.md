@@ -1,5 +1,5 @@
 # Boiler Plate React App with TypeScript and SWC
-An Ejected Create React App with the purpose of configuring it with SWC. It's wip. \ 
+An Ejected Create React App with the purpose of configuring it with SWC. It's wip.\
 TODO: Convert remaining babel to swc.
 
 It has: 
@@ -36,8 +36,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 #### Easy Deployment Option
-Build the app with `yarn build` and then copy the contents of the build folder to a S3 bucket. The S3 bucket should be configured to host a website.\
-Read the AWS configuration options to set up S3, cloudfront and SSL certificates.
+Build the app with `yarn build` and then copy the contents of the build folder to an S3 bucket. The S3 bucket should be configured to host a website.\
 
 ## Styling with Sass 
 Different ways of using sass included. The classnames module has been included to combine styles (not shown in examples).\

@@ -44,6 +44,10 @@ const babelRuntimeRegenerator = require.resolve('@babel/runtime/regenerator', {
   paths: [babelRuntimeEntry],
 });
 
+// const remarkGfm = require.resolve('./webpack/lib/remarkGfm');
+const remarkFrontmatter = require.resolve("remark-frontmatter"); // YAML and such.
+const remarkGfm = require.resolve("remark-gfm") ;// Tables, footnotes, strikethrough, task lists, literal URLs.
+
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
 const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
@@ -376,6 +380,46 @@ module.exports = function (webpackEnv) {
                   maxSize: imageInlineSizeLimit,
                 },
               },
+            },
+
+            // "mdx" loader
+            // added  mdx support  17.06.2022 - AH
+            {
+              test: /\.mdx?$/,
+              use: [
+                {
+                  loader: "@mdx-js/loader",
+                  /** @type {import('@mdx-js/loader').Options} */
+                  options: {
+                    // ...
+                    // ...
+                  },
+                },
+              ],
+            },
+            // '"frontMatter" loader
+            // added frontMatter support  17.06.2022 - AH
+            {
+              test: /.mdx?$/,
+              use: [
+                "swc-loader",
+                // "remark-frontmatter",
+                // "remark-gfm",
+                {
+                  loader: "@mdx-js/loader",
+                  /** @type {import('@mdx-js/loader').Options} */
+                  options: {
+                    remarkPlugins: [
+                      [remarkGfm, { singleTilde: false }],
+                      remarkFrontmatter,
+                    ],
+                    resolve: {
+                      extensions: [".mdx", ".md"],
+                    },
+                  },
+                },
+                path.join(__dirname, "./lib/frontmatterLoader.js"),
+              ],
             },
             {
               test: /\.svg$/,

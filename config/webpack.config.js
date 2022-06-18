@@ -457,6 +457,8 @@ module.exports = function (webpackEnv) {
                 customize: require.resolve(
                   "babel-preset-react-app/webpack-overrides"
                 ),
+                // NOTE:  https://swc.rs/docs/configuration/compilation#jsctransformreactrefresh     // 18.06.2022 - AH.
+                // --- start ---
                 // presets: [
                 //   [
                 //     require.resolve('babel-preset-react-app'),
@@ -465,12 +467,13 @@ module.exports = function (webpackEnv) {
                 //     },
                 //   ],
                 // ],
-
                 // plugins: [
                 //   isEnvDevelopment &&
                 //     shouldUseReactRefresh &&
-                //     require.resolve('react-refresh/babel'),
+                //     require.resolve("react-refresh/babel"),
                 // ].filter(Boolean),
+                //--- end ---
+                
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
                 // directory for faster rebuilds.
@@ -484,11 +487,15 @@ module.exports = function (webpackEnv) {
             // Unlike the application JS, we only compile the standard ES features.
             {
               test: /\.(js|mjs)$/,
+              //TODO:   Regex replacement for @babel/runtime. Does  this meet swc direct replacement ?
+              // 18.06.2022 - AH.
               exclude: /@babel(?:\/|\\{1,2})runtime/,
               loader: require.resolve("swc-loader"),
               options: {
                 swcrc: true,
                 configFile: true,
+                // NOTE:  Below does not work with  swc-loader -  18.06.2022 - AH.
+                // --- start ---
                 // compact: false,
                 // presets: [
                 //   [
@@ -496,6 +503,7 @@ module.exports = function (webpackEnv) {
                 //     { helpers: true },
                 //   ],
                 // ],
+                // --- end ---
                 cacheDirectory: true,
                 // See #6846 for context on why cacheCompression is disabled
                 cacheCompression: false,
@@ -753,9 +761,10 @@ module.exports = function (webpackEnv) {
             // as micromatch doesn't match
             // '../cra-template-typescript/template/src/App.tsx'
             // otherwise.
+            // Added mdx - 18/06/2022 AH
             include: [
-              { file: "../**/src/**/*.{ts,tsx}" },
-              { file: "**/src/**/*.{ts,tsx}" },
+              { file: "../**/src/**/*.{ts,tsx,mdx}" },
+              { file: "**/src/**/*.{ts,tsx,mdx}" },
             ],
             exclude: [
               { file: "**/src/**/__tests__/**" },
@@ -771,6 +780,7 @@ module.exports = function (webpackEnv) {
       !disableESLintPlugin &&
         new ESLintPlugin({
           // Plugin options
+          // Bookmark: Add linting mdx - 18/06/2022 AH
           extensions: ["js", "mjs", "jsx", "ts", "tsx"],
           formatter: require.resolve("react-dev-utils/eslintFormatter"),
           eslintPath: require.resolve("eslint"),

@@ -1,16 +1,28 @@
 # Boiler Plate React App with TypeScript and SWC
-An Ejected Create React App with the purpose of configuring it with SWC. It's wip.\
-TODO: Convert remaining babel to swc.
+An Ejected Create React App  configured to compile with SWC
 
-It has: 
-- SWC  - Speedy Web Compiler hacks to an ejected create react app
-- TypeScript
+- SWC  Speedy Web Compiler hacks to an ejected create react app
 - React
-- MobX
-- Sass
+- TypeScript
+- React Router 6
+- Tailwindcss - Awesome Tailwindcss with version 6 configuration
+- mdx  - Markdown for the component era. Components  rendered in the markdown.  Tailwindcss utility class batteries included.
+- MobX - One mean state machine
 - Yup and @types/yup  included.
-- Tailwind appeared after ejecting.
+- Sass batteries included
 
+## Stuff done, stuff to do
+- [x]  build and  hot reloading tested
+- [x] frontmatter loader added
+- [x] configured tailwindcss support
+- [ ] add support for @swc/jest
+- [ ] sort out tailwindcss nesting issue
+- [ ] sort out gfm
+- [ ] clean up janky experiment code (Progress over perfection)
+- [ ] clean up directory structure
+
+## BAGS and daydreams
+-  Webassembly wasm
 ## Available Scripts
 
 In the project directory, you can run:

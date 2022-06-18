@@ -1,8 +1,7 @@
+/* add nested css to App */
+
 .App {
   text-align: center;
-  &List {
-    list-style-type: none;
-  }
 }
 
 .App-logo {

@@ -9,7 +9,7 @@ module.exports = async function (src) {
   const { content, data } = matter(src);
   const compiledGfm = await compile(
     remarkGfm(content, { singleTilde: true }),
-  );
+  ); //TODO: Experiment does not work.  remark-gfm is not working.
   
   const newContent = await compile(remark(compiledGfm));
   // Two plugins, first w/ options.
@@ -17,8 +17,4 @@ module.exports = async function (src) {
   // ${content}`;
   const code = `export const frontMatter = ${stringifyObject(data)} ${newContent}`;
   return callback(null, code);
-};;
-// Investigate
-// programatically checkiif  a package is loaded
-// https://stackoverflow.com/questions/60454251/how-to-know-the-version-of-currently-installed-package-from-yarn-lock
-// yarn list --pattern lodash --depth=0 --json --non-interactive --no-progress | jq -r '.data.trees[].name'
+};

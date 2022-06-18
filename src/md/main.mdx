@@ -1,43 +1,35 @@
 ---
-title: Hello
-slug: home
+title: Hello front matter
+slug: Hello slug matter
 ---
-<h1>Hello world!</h1>
-<s>strike</s>
+export const HelloWorld = () => (
+  <>
+    <span className="box-decoration-slice bg-gradient-to-r from-indigo-600 to-pink-500 text-white px-2 ...">
+      Hello  World
+    </span>
+    <span className="box-decoration-clone bg-gradient-to-r from-indigo-600 to-pink-500 text-white px-2 ...">
+      Hello World
+    </span>
+</>
+)
+
+<HelloWorld/>
+
+<h1>Hello h1</h1>
+<s>gone</s>
+  <div>Style me  mdx tomato style</div>
 <div style={{ padding: '20px', backgroundColor: 'tomato' }}>
-  <h3>This is JSX</h3>
+  ```
+   style={{ padding: '20px', backgroundColor: 'tomato' }}
+  ```
 </div>
 
-export const Thing = () => <button>World!</button>
-
+export const Thing = () => <button className="border-spacing-0 rounded-md border-2 border-green-300 hover:border-green-500 text-green-600 focus:outline-none focus:ring focus:ring-green-400 cursor-pointer">Hello tailwindcss button thing in markdown mdx thing</button>
+ 
+ ```javascript
+ export const Thing = () => <button className="text-green-600"> tailwindcss mdx button thing</button>
+  ```
 # Hello, <Thing />
-
-# GFM
-
-## Autolink literals
-
-www.example.com, https://example.com, and contact@example.com.
-
-## Footnote
-
-A note[^1]
-
-[^1]: Big note.
-
-## Strikethrough
-
-~one~ or ~~two~~ tildes.
-
-## Table
-- ^stuff^
-
-| a | b  |  c |  d  |
-| - | :- | -: | :-: |
-
-## Tasklist
-
-* [ ] to do
-* [x] done
 
 ```javascript
 const a = 1;
@@ -46,4 +38,10 @@ const c = a + b;
 console.log('Hello world!')
 ```
 
-https://rubberduckdebugging.com/
+export const CircleBlendThing = () => (
+<div className="justify-center-space-x-14">
+    <div className="mix-blend-multiply bg-blue-400 ...">Blend Blue and</div>
+    <div className="mix-blend-multiply bg-pink-400 ...">Pink in mdx</div>
+</div>)
+
+<CircleBlendThing/>

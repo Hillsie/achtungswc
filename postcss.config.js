@@ -8,6 +8,17 @@ module.exports = {
     },
     autoprefixer: {},
     tailwindcss: {},
-    ...(process.env.NODE_ENV === "production" ? { cssnano: {} } : {}),
+    "@fullhuman/postcss-purgecss": {
+      content: [
+        "./src/**/*.tsx",
+        "./src/**/*.ts",
+        "./src/**/*.mdx",
+        "./public/index.html",
+      ],
+      defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:\/]+/g) || [],
+    },
+    ...(process.env.NODE_ENV === "production"
+      ? { cssnano: { preset: "default" } }
+      : {}),
   },
 };
